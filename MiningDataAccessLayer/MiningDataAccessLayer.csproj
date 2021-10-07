@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GenericDataAccessClassLibrary\GenericDataAccessClassLibrary.csproj" />
+    <ProjectReference Include="..\MiningClassLibrary\MiningClassLibrary.csproj" />
+  </ItemGroup>
+
+</Project>
