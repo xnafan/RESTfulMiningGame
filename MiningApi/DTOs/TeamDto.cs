@@ -8,6 +8,6 @@ namespace MiningApi.Dtos
         public Guid Id { get; set; }
         public string Name { get; set; }
         public int AccountBalance { get; set; }
-        public IEnumerable<QuadrantDto> KnownQuadrants { get; set; } = new List<QuadrantDto>();
+        public List<QuadrantDto> KnownQuadrants { get; set; } = new List<QuadrantDto>();
     }
 }

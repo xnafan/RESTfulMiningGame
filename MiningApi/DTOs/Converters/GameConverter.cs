@@ -18,7 +18,6 @@ namespace MiningApi.DTOs.Converters
             var gameDto = game.CopyPropertiesTo(new GameDto());
             gameDto.TeamNames = game.Teams.Select(team => team.Name);
             return gameDto;
-
         }
 
         public static IEnumerable<Game> FromDtos(this IEnumerable<GameDto> gameDtos)

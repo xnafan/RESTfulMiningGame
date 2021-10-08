@@ -25,15 +25,15 @@ namespace TestProject
             Game game = new Game();
             game.Id = id;
             game.Name = gameName;
-            game.AreaHeightInQuadrants = areaHeight;
-            game.AreaWidthInQuadrants = areaWidth;
+            game.GameAreaHeightInQuadrants = areaHeight;
+            game.GameAreaWidthInQuadrants = areaWidth;
             game.Seed = seed;
 
             //assert
             Assert.AreEqual(id, game.Id, "IDs differed");
             Assert.AreEqual(gameName, game.Name, "The name differed");
-            Assert.AreEqual(areaHeight, game.AreaHeightInQuadrants, "The height differed");
-            Assert.AreEqual(areaWidth, game.AreaWidthInQuadrants, "The width differed");
+            Assert.AreEqual(areaHeight, game.GameAreaHeightInQuadrants, "The height differed");
+            Assert.AreEqual(areaWidth, game.GameAreaWidthInQuadrants, "The width differed");
             Assert.AreEqual(seed, game.Seed, "The seed differed");
 
         }

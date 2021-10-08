@@ -7,9 +7,11 @@ namespace GenericDataAccessClassLibrary
     {
         public static T CopyPropertiesTo<T>(this object sourceObject, T destinationObject)
         {
-            foreach (PropertyInfo property in destinationObject.GetType().GetProperties().Where(p => p.CanWrite))
+            foreach (PropertyInfo destinationProperty in destinationObject.GetType().GetProperties().Where(p => p.CanWrite ))
             {
-                property.SetValue(destinationObject, property.GetValue(sourceObject, null), null);
+                if (!sourceObject.GetType().GetProperties().Any(sourceProp => sourceProp.Name == destinationProperty.Name && sourceProp.PropertyType == destinationProperty.PropertyType)) continue;
+                var sourceProp = sourceObject.GetType().GetProperty(destinationProperty.Name);
+                destinationProperty.SetValue(destinationObject, sourceProp.GetValue(sourceObject, null), null);
             }
             return destinationObject;
         }

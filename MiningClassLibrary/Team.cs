@@ -9,6 +9,6 @@ namespace MiningClassLibrary
         public Guid Id { get; set; }
         public string Name { get; set; }
         public int AccountBalance { get; set; }
-        public List<Quadrant> KnownQuadrants { get; set; } = new List<Quadrant>();
+        public List<Quadrant> KnownQuadrants { get; set; } = new();
     }
 }

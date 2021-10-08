@@ -14,7 +14,9 @@ namespace MiningApi.DTOs.Converters
         }
         public static TeamDto ToDto(this Team team)
         {
-            return team.CopyPropertiesTo(new TeamDto());
+            var teamDto = team.CopyPropertiesTo(new TeamDto());
+            teamDto.KnownQuadrants.AddRange(team.KnownQuadrants.ToDtos());
+            return teamDto;
         }
 
         public static IEnumerable<Team> FromDtos(this IEnumerable<TeamDto> teamDtos)

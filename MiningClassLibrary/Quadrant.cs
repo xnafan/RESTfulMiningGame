@@ -1,6 +1,6 @@
 ﻿namespace MiningClassLibrary
 {
-    public struct Quadrant
+    public class Quadrant
     {
         public int X { get; set; }
         public int Y { get; set; }

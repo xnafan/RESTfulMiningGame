@@ -1,6 +1,6 @@
 ﻿namespace MiningApi.Dtos
 {
-    public struct QuadrantDto
+    public class QuadrantDto
     {
         public int X { get; set; }
         public int Y { get; set; }

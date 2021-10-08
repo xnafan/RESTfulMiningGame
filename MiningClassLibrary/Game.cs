@@ -8,9 +8,9 @@ namespace MiningClassLibrary
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public List<Team> Teams { get; set; }
-        public int AreaHeightInQuadrants { get; set; }
-        public int AreaWidthInQuadrants { get; set; }
+        public List<Team> Teams { get; set; } = new();
+        public int GameAreaHeightInQuadrants { get; set; }
+        public int GameAreaWidthInQuadrants { get; set; }
         public int Seed { get; set; }
     }
 }

@@ -7,8 +7,8 @@ namespace MiningClassLibrary
     public class Auction : IIdentifiable<Guid>
     {
         public Guid Id { get; set; }
-        public Guid SellerTeamId { get; set; }
-        public MapFragment MapFragment { get; set; }
+        public Team SellerTeam { get; set; }
+        public List<Quadrant> Quadrants { get; set; }
         public int Price { get; set; }
     }
 }
