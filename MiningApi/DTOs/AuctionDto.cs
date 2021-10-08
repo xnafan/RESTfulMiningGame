@@ -2,13 +2,13 @@
 using System;
 using System.Collections.Generic;
 
-namespace MiningClassLibrary
+namespace MiningApi.Dtos
 {
-    public class Auction : IIdentifiable<Guid>
+    public class AuctionDto : IIdentifiable<Guid>
     {
         public Guid Id { get; set; }
         public Guid SellerTeamId { get; set; }
-        public List<Quadrant> KnownQuadrants { get; set; }
+        public List<QuadrantDto> KnownQuadrants { get; set; }
         public int Price { get; set; }
     }
 }

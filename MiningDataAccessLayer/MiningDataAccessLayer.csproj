@@ -9,4 +9,8 @@
     <ProjectReference Include="..\MiningClassLibrary\MiningClassLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SqlServer\" />
+  </ItemGroup>
+
 </Project>

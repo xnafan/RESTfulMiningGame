@@ -41,16 +41,13 @@ namespace GenericDataAccessClassLibrary
 
             T existingItem = GetById(updatedItem.Id);
             if (existingItem == null) { return false; }
-            CopyValues(existingItem, updatedItem);
+            CopyValues(updatedItem, existingItem);
             return true;
         }
 
-        protected static void CopyValues(T targetObject, T sourceObject)
+        protected static void CopyValues(T sourceObject, T destinationObject)
         {
-            foreach (PropertyInfo property in typeof(T).GetProperties().Where(p => p.CanWrite))
-            {
-                property.SetValue(targetObject, property.GetValue(sourceObject, null), null);
-            }
+            sourceObject.CopyPropertiesTo(destinationObject);
         }
 
         protected abstract U GetNewId();

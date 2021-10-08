@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiningDataAccessLayer", "Mi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericDataAccessClassLibrary", "GenericDataAccessClassLibrary\GenericDataAccessClassLibrary.csproj", "{B363649E-2537-45E6-B4A9-78E06369F76F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiningClassLibrary", "MiningClassLibrary\MiningClassLibrary.csproj", "{57B7C057-7B59-4349-892F-DC10B85C6D5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiningClassLibrary", "MiningClassLibrary\MiningClassLibrary.csproj", "{57B7C057-7B59-4349-892F-DC10B85C6D5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{01305426-A7DC-473C-BFAD-69DC79BA4DFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{57B7C057-7B59-4349-892F-DC10B85C6D5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57B7C057-7B59-4349-892F-DC10B85C6D5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57B7C057-7B59-4349-892F-DC10B85C6D5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01305426-A7DC-473C-BFAD-69DC79BA4DFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01305426-A7DC-473C-BFAD-69DC79BA4DFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01305426-A7DC-473C-BFAD-69DC79BA4DFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01305426-A7DC-473C-BFAD-69DC79BA4DFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
