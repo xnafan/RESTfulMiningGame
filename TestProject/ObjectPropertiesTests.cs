@@ -1,4 +1,4 @@
-using MiningClassLibrary;
+using MiningDataAccessLayer.Model;
 using NUnit.Framework;
 using System;
 

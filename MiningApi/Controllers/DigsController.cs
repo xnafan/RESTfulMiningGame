@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MiningClassLibrary;
 using MiningDataAccessLayer;
+using MiningDataAccessLayer.Model;
 using System.Collections.Generic;
 
 namespace MiningApi.Controllers

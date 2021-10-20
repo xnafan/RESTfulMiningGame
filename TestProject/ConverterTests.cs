@@ -1,6 +1,6 @@
 using MiningApi.Dtos;
 using MiningApi.DTOs.Converters;
-using MiningClassLibrary;
+using MiningDataAccessLayer.Model;
 using NUnit.Framework;
 using System;
 using System.Linq;

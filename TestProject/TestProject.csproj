@@ -16,7 +16,6 @@
   <ItemGroup>
     <ProjectReference Include="..\GenericDataAccessClassLibrary\GenericDataAccessClassLibrary.csproj" />
     <ProjectReference Include="..\MiningApi\MiningApi.csproj" />
-    <ProjectReference Include="..\MiningClassLibrary\MiningClassLibrary.csproj" />
     <ProjectReference Include="..\MiningDataAccessLayer\MiningDataAccessLayer.csproj" />
   </ItemGroup>
 

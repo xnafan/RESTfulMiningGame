@@ -1,6 +1,6 @@
 ﻿using GenericDataAccessClassLibrary;
 using MiningApi.Dtos;
-using MiningClassLibrary;
+using MiningDataAccessLayer.Model;
 using System.Collections.Generic;
 using System.Linq;
 

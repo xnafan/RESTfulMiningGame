@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MiningApi.Dtos;
 using MiningApi.DTOs.Converters;
-using MiningClassLibrary;
 using MiningDataAccessLayer;
 using System;
 using System.Collections.Generic;

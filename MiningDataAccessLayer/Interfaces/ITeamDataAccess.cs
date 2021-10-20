@@ -1,5 +1,5 @@
 ﻿using GenericDataAccessClassLibrary.Interfaces.Generic;
-using MiningClassLibrary;
+using MiningDataAccessLayer.Model;
 using System;
 
 namespace MiningDataAccessLayer.Interfaces

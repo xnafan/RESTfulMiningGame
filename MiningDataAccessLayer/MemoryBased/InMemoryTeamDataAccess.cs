@@ -1,7 +1,6 @@
 ﻿using GenericDataAccessClassLibrary;
-using GenericDataAccessClassLibrary.Interfaces.Generic;
-using MiningClassLibrary;
 using MiningDataAccessLayer.Interfaces;
+using MiningDataAccessLayer.Model;
 using System;
 
 namespace MiningDataAccessLayer.MemoryBased

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MiningClassLibrary;
 using MiningDataAccessLayer.Interfaces;
+using MiningDataAccessLayer.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MiningApi.Controllers
 {
-    
+
     [Route("api/[controller]")]
     [ApiController]
     public class AuctionsController : ControllerBase
