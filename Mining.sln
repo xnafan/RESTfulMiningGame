@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericDataAccessClassLibra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiningClassLibrary", "MiningClassLibrary\MiningClassLibrary.csproj", "{57B7C057-7B59-4349-892F-DC10B85C6D5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{01305426-A7DC-473C-BFAD-69DC79BA4DFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject", "TestProject\TestProject.csproj", "{01305426-A7DC-473C-BFAD-69DC79BA4DFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiningClient", "MiningClient\MiningClient.csproj", "{61BF6B07-6B4E-457B-A820-424FB2B64977}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceClientClassLibrary", "ServiceClientClassLibrary\ServiceClientClassLibrary.csproj", "{581E3566-74C0-414C-A6B8-9384D8952074}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{01305426-A7DC-473C-BFAD-69DC79BA4DFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01305426-A7DC-473C-BFAD-69DC79BA4DFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01305426-A7DC-473C-BFAD-69DC79BA4DFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61BF6B07-6B4E-457B-A820-424FB2B64977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61BF6B07-6B4E-457B-A820-424FB2B64977}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61BF6B07-6B4E-457B-A820-424FB2B64977}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61BF6B07-6B4E-457B-A820-424FB2B64977}.Release|Any CPU.Build.0 = Release|Any CPU
+		{581E3566-74C0-414C-A6B8-9384D8952074}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{581E3566-74C0-414C-A6B8-9384D8952074}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{581E3566-74C0-414C-A6B8-9384D8952074}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{581E3566-74C0-414C-A6B8-9384D8952074}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

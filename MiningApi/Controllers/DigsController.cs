@@ -21,8 +21,5 @@ namespace MiningApi.Controllers
         {
             return null;
         }
-
-
-
     }
 }

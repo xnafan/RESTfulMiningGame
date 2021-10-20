@@ -40,7 +40,6 @@ namespace GenericDataAccessClassLibrary
             if (!_internalStorage.ContainsKey(updatedItem.Id)) { return false; }
 
             T existingItem = GetById(updatedItem.Id);
-            if (existingItem == null) { return false; }
             CopyValues(updatedItem, existingItem);
             return true;
         }

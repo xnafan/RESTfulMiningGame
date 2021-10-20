@@ -11,7 +11,7 @@ namespace MiningApi.DTOs.Converters
 
         public static Game FromDto(this GameDto gameDto)
         {
-            return new Game() { Id = gameDto.Id, Name = gameDto.Name };
+            return gameDto.CopyPropertiesTo(new Game());
         }
         public static GameDto ToDto(this Game game)
         {

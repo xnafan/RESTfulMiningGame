@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MiningClassLibrary;
+using MiningDataAccessLayer.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,40 +10,51 @@ using System.Threading.Tasks;
 
 namespace MiningApi.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class AuctionsController : ControllerBase
     {
+        IAuctionDataAccess _dataAccess;
+
+        public AuctionsController(IAuctionDataAccess dataAccess)
+        {
+            _dataAccess = dataAccess;
+        }
+
         // GET: api/<AuctionsController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Auction> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _dataAccess.GetAll();
         }
 
         // GET api/<AuctionsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Auction Get(Guid id)
         {
-            return "value";
+            return _dataAccess.GetById(id);
         }
 
         // POST api/<AuctionsController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Auction auction)
         {
+            _dataAccess.Add(auction);
         }
 
         // PUT api/<AuctionsController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] Auction auction)
         {
+            _dataAccess.Update(auction);
         }
 
         // DELETE api/<AuctionsController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
+            _dataAccess.Delete(id);
         }
     }
 }

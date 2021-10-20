@@ -81,7 +81,6 @@ namespace TestProject
             int y = 8;
             int content = 42;
 
-
             //act
             Quadrant q1 = new Quadrant() { X = x, Y = y, Content = content };
             var quadrantDto = q1.ToDto();

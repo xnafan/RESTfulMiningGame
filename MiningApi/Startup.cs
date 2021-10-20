@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MiningDataAccessLayer.Interfaces;
 
 namespace MiningApi
 {
@@ -29,6 +30,8 @@ namespace MiningApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IGameDataAccess, InMemoryGameDataAccess>();
+            services.AddSingleton<ITeamDataAccess, InMemoryTeamDataAccess>();
+            services.AddSingleton<IAuctionDataAccess, InMemoryAuctionDataAccess>();
             services.AddControllers();
             services.AddSwaggerGen();
         }

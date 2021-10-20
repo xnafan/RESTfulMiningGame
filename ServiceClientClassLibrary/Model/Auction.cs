@@ -1,10 +1,9 @@
-﻿using GenericDataAccessClassLibrary.Interfaces.Generic;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace MiningClassLibrary
+namespace ServiceClientClassLibrary.Model
 {
-    public class Auction : IIdentifiable<Guid>
+    public class Auction 
     {
         public Guid Id { get; set; }
         public Team SellerTeam { get; set; }
