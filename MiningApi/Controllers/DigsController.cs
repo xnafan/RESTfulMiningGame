@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MiningDataAccessLayer;
+using MiningDataAccessLayer.Interfaces;
 using MiningDataAccessLayer.Model;
 using System.Collections.Generic;
 
@@ -9,9 +9,9 @@ namespace MiningApi.Controllers
     [Route("api/[controller]")]
     public class DigsController : ControllerBase
     {
-        private readonly IGameDataAccess _dataAccess;
+        private readonly IMiningGameDao _dataAccess;
 
-        public DigsController(IGameDataAccess dataAccess)
+        public DigsController(IMiningGameDao dataAccess)
         {
             _dataAccess = dataAccess;
         }

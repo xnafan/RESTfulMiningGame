@@ -13,12 +13,9 @@ namespace MiningApi.Controllers
     public class TeamsController : ControllerBase
     {
 
-        private ITeamDataAccess _teamDataAccess;
+        private ITeamDao _teamDataAccess;
 
-        public TeamsController(ITeamDataAccess teamDataAccess)
-        {
-            _teamDataAccess = teamDataAccess;
-        }
+        public TeamsController(ITeamDao teamDataAccess) => _teamDataAccess = teamDataAccess;
 
         [HttpGet]
         public ActionResult<IEnumerable<TeamDto>> Get()

@@ -7,7 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MiningApi.Controllers;
 using Microsoft.Extensions.Logging;
-using MiningDataAccessLayer;
 using MiningDataAccessLayer.MemoryBased;
 using System;
 using System.Collections.Generic;
@@ -29,9 +28,9 @@ namespace MiningApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IGameDataAccess, InMemoryGameDataAccess>();
-            services.AddSingleton<ITeamDataAccess, InMemoryTeamDataAccess>();
-            services.AddSingleton<IAuctionDataAccess, InMemoryAuctionDataAccess>();
+            services.AddSingleton<IMiningGameDao, InMemoryGameDao>();
+//          services.AddSingleton<ITeamDao, InMemoryQuadrantDataAccess>();
+            services.AddSingleton<IMapSquareDao, InMemoryAuctionDataAccess>();
             services.AddControllers();
             services.AddSwaggerGen();
         }

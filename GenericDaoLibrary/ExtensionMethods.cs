@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Reflection;
 
-namespace GenericDataAccessClassLibrary
+namespace GenericDaoLibrary
 {
     public static class ExtensionMethods
     {

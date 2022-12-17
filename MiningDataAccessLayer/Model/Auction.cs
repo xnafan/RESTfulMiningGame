@@ -1,15 +1,11 @@
-﻿using GenericDataAccessClassLibrary.Interfaces.Generic;
-using System;
-using System.Collections.Generic;
+﻿using GenericDaoLibrary.Interfaces;
 
-namespace MiningDataAccessLayer.Model
+namespace MiningDataAccessLayer.Model;
+public class Auction : IIdentifiable<int>
 {
-    public class Auction : IIdentifiable<Guid>
-    {
-        public Guid Id { get; set; }
-        public Team SellerTeam { get; set; }
-        public int X { get; set; }
-        public int Y { get; set; }
-        public int Price { get; set; }
-    }
+    public int Id { get; set; }
+    public Team SellerTeam { get; set; }
+    public int X { get; set; }
+    public int Y { get; set; }
+    public int Price { get; set; }
 }

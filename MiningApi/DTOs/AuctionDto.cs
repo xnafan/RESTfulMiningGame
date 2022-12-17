@@ -1,4 +1,4 @@
-﻿using GenericDataAccessClassLibrary.Interfaces.Generic;
+﻿using GenericDaoLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
 

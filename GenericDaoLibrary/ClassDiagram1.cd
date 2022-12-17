@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="GenericDaoLibrary.ShortUidDao&lt;T&gt;">
+    <Position X="5.25" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ShortUidDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GenericDaoLibrary.IntDataAccess&lt;T&gt;">
+    <Position X="3.25" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IntDataAccess.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GenericDaoLibrary.DaoBase&lt;T, U&gt;">
+    <Position X="4.5" Y="0.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAEAAAAAAAAAAAAEAAAAAAgAAAAAgIIA=</HashCode>
+      <FileName>DaoBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GenericDaoLibrary.GuidDao&lt;T&gt;">
+    <Position X="7.5" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GuidDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="GenericDaoLibrary.Interfaces.IIdentifiable&lt;T&gt;">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IIdentifiable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GenericDaoLibrary.Interfaces.IGenericDao&lt;T, Id&gt;">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>Interfaces\IGenericDao.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

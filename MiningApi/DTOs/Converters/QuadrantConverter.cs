@@ -1,4 +1,4 @@
-﻿using GenericDataAccessClassLibrary;
+﻿using GenericDaoLibrary;
 using MiningApi.Dtos;
 using MiningDataAccessLayer.Model;
 using System.Collections.Generic;

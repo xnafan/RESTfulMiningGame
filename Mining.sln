@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31624.102
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiningApi", "MiningApi\MiningApi.csproj", "{5FEDE711-5344-4017-A095-8C53EFE549CD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiningDataAccessLayer", "MiningDataAccessLayer\MiningDataAccessLayer.csproj", "{39095C3C-4D8B-4C5B-B465-6D2D27605CF2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericDataAccessClassLibrary", "GenericDataAccessClassLibrary\GenericDataAccessClassLibrary.csproj", "{B363649E-2537-45E6-B4A9-78E06369F76F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericDaoLibrary", "GenericDaoLibrary\GenericDaoLibrary.csproj", "{B363649E-2537-45E6-B4A9-78E06369F76F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject", "TestProject\TestProject.csproj", "{01305426-A7DC-473C-BFAD-69DC79BA4DFA}"
 EndProject

@@ -1,8 +1,5 @@
-﻿using GenericDataAccessClassLibrary;
+﻿using GenericDaoLibrary;
 using MiningDataAccessLayer.Interfaces;
 using MiningDataAccessLayer.Model;
-
-namespace MiningDataAccessLayer.MemoryBased
-{
-    public class InMemoryAuctionDataAccess : GuidDataAccess<Auction> , IAuctionDataAccess { }
-}
+namespace MiningDataAccessLayer.MemoryBased;
+public class InMemoryAuctionDataAccess : IntDataAccess<Auction> , IMapSquareDao { }

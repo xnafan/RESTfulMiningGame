@@ -1,3 +1,4 @@
+using GenericDaoLibrary;
 using MiningDataAccessLayer.Model;
 using NUnit.Framework;
 using System;
@@ -15,25 +16,25 @@ namespace TestProject
         public void GameObjectProperties()
         {
             //arrange
-            Guid id = Guid.NewGuid();
+            string id = ShortUIDTool.CreateShortId();
             string gameName = "Yukon Ho!";
             int areaHeight = 6;
             int areaWidth = 12;
             int seed = 53;
 
             //act
-            Game game = new Game();
-            game.Id = id;
+            MiningGame game = new MiningGame();
+            game.Id= id;
             game.Name = gameName;
-            game.GameAreaHeightInQuadrants = areaHeight;
-            game.GameAreaWidthInQuadrants = areaWidth;
+            game.MapRowCount = areaHeight;
+            game.MapColumnCount = areaWidth;
             game.Seed = seed;
 
             //assert
             Assert.AreEqual(id, game.Id, "IDs differed");
             Assert.AreEqual(gameName, game.Name, "The name differed");
-            Assert.AreEqual(areaHeight, game.GameAreaHeightInQuadrants, "The height differed");
-            Assert.AreEqual(areaWidth, game.GameAreaWidthInQuadrants, "The width differed");
+            Assert.AreEqual(areaHeight, game.MapRowCount, "The height differed");
+            Assert.AreEqual(areaWidth, game.MapColumnCount, "The width differed");
             Assert.AreEqual(seed, game.Seed, "The seed differed");
 
         }

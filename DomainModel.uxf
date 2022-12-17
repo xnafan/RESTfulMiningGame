@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>14</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1092</x>
+      <y>560</y>
+      <w>252</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>Team
+-
+Name
+AccountBalance
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>686</x>
+      <y>560</y>
+      <w>252</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>MiningGame
+-
+Name
+MapColumns
+MapRows
+Seed	
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>924</x>
+      <y>574</y>
+      <w>196</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*
+&lt; plays in</panel_attributes>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>686</x>
+      <y>812</y>
+      <w>252</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>MapSquare
+-
+Column
+Row
+Value
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>784</x>
+      <y>700</y>
+      <w>56</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=*
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1078</x>
+      <y>812</y>
+      <w>252</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>Auction
+-
+Price
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1190</x>
+      <y>672</y>
+      <w>154</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*
+for sale by ^</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>924</x>
+      <y>854</y>
+      <w>182</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*
+&lt; over </panel_attributes>
+    <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>924</x>
+      <y>672</y>
+      <w>196</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*
+known by ^</panel_attributes>
+    <additional_attributes>120.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+</diagram>

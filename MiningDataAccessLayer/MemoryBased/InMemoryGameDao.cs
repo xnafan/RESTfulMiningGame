@@ -5,5 +5,7 @@ using System;
 
 namespace MiningDataAccessLayer.MemoryBased
 {
-    public class InMemoryTeamDataAccess : GuidDao<Team>, ITeamDao  { }
+    public class InMemoryGameDao : ShortUidDao<MiningGame>, IMiningGameDao
+    {
+    }
 }
