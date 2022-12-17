@@ -1,5 +1,6 @@
 ﻿using GenericDaoLibrary;
 using MiningApi.Dtos;
+using MiningDataAccessLayer.Extensions;
 using MiningDataAccessLayer.Model;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,15 @@ namespace MiningApi.DTOs.Converters
 
         public static MiningGame FromDto(this MiningGameDto gameDto)
         {
-            return gameDto?.CopyPropertiesTo(new MiningGame());
+            var game = gameDto?.CopyPropertiesTo(new MiningGame());
+            gameDto.MapSquares.ForEach(square => game.MapSquareValues[square.X, square.Y] = square.Value);
+            return game;
         }
         public static MiningGameDto ToDto(this MiningGame game)
         {
             var gameDto = game?.CopyPropertiesTo(new MiningGameDto());
-           // gameDto.TeamNames = Teams.Select(team => team.Name);
+            gameDto.MapSquares = game.MapSquareValues.GetAllPositions().Select(tile => new MapSquareDto() {X = tile.X, Y = tile.Y, Value = game.MapSquareValues[tile.X, tile.Y]}).ToList();
+            //gameDto.TeamNames = Teams.Select(team => team.Name);
             return gameDto;
         }
 

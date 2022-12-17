@@ -8,6 +8,6 @@ namespace ServiceClientClassLibrary.Model
         public string Id { get; set; }
         public string Name { get; set; }
         public int AccountBalance { get; set; }
-        public List<MapSquareDto> KnownQuadrants { get; set; } = new();
+        public List<MapSquareDto> KnownMapSquares{ get; set; } = new();
     }
 }

@@ -49,7 +49,7 @@ namespace TestProject
             Assert.AreEqual(id, team.Id, "The ID differed");
             Assert.AreEqual(teamName, team.Name, "The name differed");
             Assert.AreEqual(accountBalance, team.AccountBalance, "The account balance differed");
-            Assert.AreEqual(q1.X, team.KnownMapSquares[0].X, "The quadrant differed");
+            Assert.AreEqual(q1.X, team.KnownMapSquares[0].X, "The map square differed");
 
         }
     }

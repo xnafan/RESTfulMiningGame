@@ -1,39 +1,47 @@
 ﻿using ServiceClientClassLibrary;
 using ServiceClientClassLibrary.Model;
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 namespace MiningClient;
 public partial class MainForm : Form
 {
+    #region Properties
     private static readonly Uri BASE_URI = new Uri("https://localhost:44351/api/");
-    public MiningGameDto CurrentGame { get; set; }
     public Team _ourTeam { get; set; }
     public static ServiceClient ServiceClient { get; set; }
     public static AdminServiceClient AdminClient { get; set; }
 
+
+    public MiningGameDto CurrentGame
+    {
+        get { return lstGames.SelectedItem as MiningGameDto; }
+        set
+        {
+            lstGames.SelectedItem = value;
+            SetAndShowCurrentGameOnMapPanel();
+        }
+    }
+    #endregion
+
     public MainForm()
     {
         InitializeComponent();
-         AdminClient = new (BASE_URI);
-        AdminClient.CreateGame("Our game", 32);
-        _ourTeam = new Team() {Name = "Our team", KnownQuadrants = new List<MapSquareDto>() { new MapSquareDto() { X = 2, Y = 7, Value=10} ,
-        new MapSquareDto() { X = 11, Y = 5, Value=50},
-        new MapSquareDto() { X = 8, Y = 3, Value=80},
-        } };
-        pnlMap.KnownMapSquares = _ourTeam.KnownQuadrants;
+        AdminClient = new(BASE_URI);
+        lstGames.SelectedIndexChanged += (_, _) => CurrentGame = lstGames.SelectedItem as MiningGameDto;
+        Load += (_, _) => LoadGamesFromServer();
     }
 
-    private void Form1_Load(object sender, EventArgs e)
+    private void SetAndShowCurrentGameOnMapPanel()
     {
-        //Guid guid = AdminServiceClient();
-        var gameGuidForm = new GameGuidForm(AdminClient);
-        if (gameGuidForm.ShowDialog() == DialogResult.OK)
-        {
-            ServiceClient  = new ServiceClient(BASE_URI, gameGuidForm.ValidGameGuid);
-            CurrentGame = ServiceClient.GetGameInfo();
-            
-            pnlMap.MapSideLength = CurrentGame.MapSideLength;
-        }
+        pnlMap.MapSideLength = CurrentGame?.MapSideLength ?? 0;
+        pnlMap.KnownMapSquares = CurrentGame?.MapSquares;
+        pnlMap.Refresh();
+    }
+    private void LoadGamesFromServer()
+    {
+        lstGames.Items.Clear();
+        AdminClient.GetAll().ToList().ForEach(game => lstGames.Items.Add(game));
+        if (lstGames.Items.Count > 0) { CurrentGame = lstGames.Items[0] as MiningGameDto; }
     }
 }

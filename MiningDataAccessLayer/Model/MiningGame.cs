@@ -13,17 +13,7 @@ public class MiningGame : IIdentifiable<string>
     public List<Team> Teams { get; set; } = new();
     public int MapSideLength { get; private set; } = 32;
     public int MapSquareProbePrice { get; set; } = 50;
-
-    private int[,] _mapSquareValues;
-    private int[,] MapSquareValues
-    {
-        get
-        {
-            if (_mapSquareValues == null) { _mapSquareValues = GenerateMap(); }
-            return _mapSquareValues;
-        }
-        set { _mapSquareValues = value; }
-    }
+    public int[,] MapSquareValues { get; set; }
     public int GetMapSquareValue(int column, int row)
     {
         if (!MapContainsCoordinate(column, row))
@@ -36,9 +26,14 @@ public class MiningGame : IIdentifiable<string>
     #endregion
 
     #region Constructors
-    public MiningGame(string id, string name, int mapSideLength = 32) => Id = id;
+    public MiningGame(string id, string name, int mapSideLength = 32) : this()
+    {
+        Id = id;
+        Name = name;
+        MapSideLength = mapSideLength;
+    }
 
-    public MiningGame() { }
+    public MiningGame() => MapSquareValues = GenerateMap();
 
     #endregion
 
@@ -47,11 +42,11 @@ public class MiningGame : IIdentifiable<string>
     {
         Random random = new(Id.ToIntHash());
         int[,] map = new int[MapSideLength, MapSideLength];
-        for (int i = 0; i < MapSideLength * MapSideLength / 10; i++)
+        for (int i = 0; i < MapSideLength * MapSideLength / 5; i++)
         {
-            map[random.Next(MapSideLength), random.Next(MapSideLength)] = 50 + random.Next(50);
+            map[random.Next(MapSideLength), random.Next(MapSideLength)] = random.Next(100);
         }
-        return map.Smooth(5);
+        return map.Smooth(10).ScaleValues(0,100);
     }
 
     private bool MapContainsCoordinate(int x, int y)

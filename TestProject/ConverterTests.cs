@@ -59,7 +59,7 @@ public class ConverterTests
         Assert.AreEqual(id, team.Id, "The ID differed");
         Assert.AreEqual(teamName, team.Name, "The name differed");
         Assert.AreEqual(accountBalance, team.AccountBalance, "The account balance differed");
-        Assert.AreEqual(q1.X, team.KnownMapSquares[0].X, "The quadrant differed");
+        Assert.AreEqual(q1.X, team.KnownMapSquares[0].X, "The map square differed");
     }
 
     [Test]
@@ -72,10 +72,10 @@ public class ConverterTests
 
         //act
         MapSquare q1 = new MapSquare() { X = x, Y = y, Value = value };
-        var quadrantDto = q1.ToDto();
+        var mapSquareDto = q1.ToDto();
         //assert
-        Assert.AreEqual(x, quadrantDto.X, "The X differed");
-        Assert.AreEqual(y, quadrantDto.Y, "The Y differed");
-        Assert.AreEqual(value, quadrantDto.Value, "The content differed");
+        Assert.AreEqual(x, mapSquareDto.X, "The X differed");
+        Assert.AreEqual(y, mapSquareDto.Y, "The Y differed");
+        Assert.AreEqual(value, mapSquareDto.Value, "The content differed");
     }
 }

@@ -17,7 +17,7 @@ namespace MiningApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<MapSquare> GetKnownQuadrants()
+        public IEnumerable<MapSquare> GetKnownMapSquares()
         {
             return null;
         }

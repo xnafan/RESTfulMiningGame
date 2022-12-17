@@ -1,26 +1,21 @@
 ﻿using ServiceClientClassLibrary.Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 namespace MiningClient.CustomControls;
 public class ProspectingPanel : Panel
 {
     private float tileSizeInPixels;
     private int mapSideLength = 1;
-    private Brush[] palette = new Brush[] {new SolidBrush(Color.FromArgb(25,Color.Red)), new SolidBrush(Color.FromArgb(50, Color.Red)),
-    new SolidBrush(Color.FromArgb(75,Color.Red)),
-    new SolidBrush(Color.FromArgb(100,Color.Red)),
-    new SolidBrush(Color.FromArgb(125,Color.Red)),
-    new SolidBrush(Color.FromArgb(150,Color.Red)),
-    new SolidBrush(Color.FromArgb(175,Color.Red)),
-    new SolidBrush(Color.FromArgb(200,Color.Red)),
-    new SolidBrush(Color.FromArgb(225,Color.Red)),
-    new SolidBrush(Color.FromArgb(255,Color.Red)), };
-    public int MapSideLength { get => mapSideLength; set {mapSideLength = value; RecalculateScaling(); }
-}
-
-    public List<MapSquareDto> KnownMapSquares {get; set; } = new List<MapSquareDto>();
+    private List<SolidBrush> palette = Enumerable.Range(0, 255).Select(no => new SolidBrush(Color.FromArgb(no, Color.Red))).ToList();
+    public int MapSideLength
+    {
+        get => mapSideLength; set { mapSideLength = value; RecalculateScaling(); }
+    }
+    public List<MapSquareDto> KnownMapSquares { get; set; } = new List<MapSquareDto>();
 
     public ProspectingPanel()
     {
@@ -43,19 +38,25 @@ public class ProspectingPanel : Panel
     protected override void OnPaint(PaintEventArgs e)
     {
         e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-        DrawMap(e.Graphics);
-        foreach (var mapSquare in KnownMapSquares)
-        {
-            DrawQuadrant(e.Graphics, mapSquare);
-        }
+            DrawMap(e.Graphics);
     }
 
-    private void DrawQuadrant(Graphics g, MapSquareDto quadrant)
+    private void DrawMapSquare(Graphics g, MapSquareDto mapSquare)
     {
-        g.FillRectangle(palette[quadrant.Value/10], tileSizeInPixels * quadrant.X-1, tileSizeInPixels * quadrant.Y-1, tileSizeInPixels, tileSizeInPixels);
+        var paletteIndex = (int)(mapSquare.Value / 101f * palette.Count());
+        g.FillRectangle(palette[paletteIndex], tileSizeInPixels * mapSquare.X - 1, tileSizeInPixels * mapSquare.Y - 1, tileSizeInPixels, tileSizeInPixels);
     }
 
     private void DrawMap(Graphics graphics)
+    {
+            foreach (var mapSquare in KnownMapSquares)
+            {
+                DrawMapSquare(graphics, mapSquare);
+            }
+            DrawGrid(graphics);
+    }
+
+    private void DrawGrid(Graphics graphics)
     {
         for (int x = 0; x < MapSideLength; x++)
         {
@@ -64,10 +65,5 @@ public class ProspectingPanel : Panel
                 graphics.DrawRectangle(Pens.Black, tileSizeInPixels * x, tileSizeInPixels * y, tileSizeInPixels, tileSizeInPixels);
             }
         }
-    }
-
-    private void DrawGrid(Graphics graphics)
-    {
-        throw new NotImplementedException();
     }
 }

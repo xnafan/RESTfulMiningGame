@@ -33,10 +33,6 @@ public partial class GameGuidForm : Form
         {
             return _adminClient.DoesGameExist(gameId);
         }
-        catch (FormatException fex)
-        {
-            return false;
-        }
         catch (Exception ex)
         {
             MessageBox.Show($"Error retrieving game data: '{ex.Message}'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

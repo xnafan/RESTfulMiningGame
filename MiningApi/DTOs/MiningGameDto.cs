@@ -8,4 +8,5 @@ public class MiningGameDto
     public int MapSideLength { get; set; }
     public int InitialTeamFunding { get; set; }
     public int MapSquareProbePrice { get; set; }
+    public List<MapSquareDto> MapSquares { get; set; }
 }

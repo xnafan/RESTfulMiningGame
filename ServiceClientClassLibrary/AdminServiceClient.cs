@@ -1,6 +1,7 @@
 ﻿using RestSharp;
 using ServiceClientClassLibrary.Model;
 using System;
+using System.Collections.Generic;
 
 namespace ServiceClientClassLibrary
 {
@@ -8,6 +9,19 @@ namespace ServiceClientClassLibrary
     {
         public AdminServiceClient(Uri baseUri) : base(baseUri){}
 
+
+        public IEnumerable<MiningGameDto> GetAll()
+        {
+            var result = _client.Get<IEnumerable<MiningGameDto>>(CreateRequest("games"));
+            if (result.IsSuccessful)
+            {
+                return result.Data;
+            }
+            else
+            {
+                throw new Exception($"Error retrieving games. Error was '{result.ErrorMessage}'");
+            }
+        }
         public string CreateGame(string gameName, int mapSideLength)
         {
             var request = CreateRequest("games");

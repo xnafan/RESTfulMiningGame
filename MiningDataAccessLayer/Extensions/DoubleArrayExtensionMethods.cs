@@ -23,7 +23,7 @@ namespace MiningDataAccessLayer.Extensions
                         var averageOfNeighbors = arrayToSmooth.GetNeighborsContents(x,y).Average();
                         var difference = averageOfNeighbors - arrayToSmooth[x, y];
 
-                        result[x, y] = arrayToSmooth[x, y] + (int)(difference / 5);
+                        result[x, y] = arrayToSmooth[x, y] + (int)(difference / 3);
                     }
                 }
                 arrayToSmooth = result;
@@ -31,6 +31,22 @@ namespace MiningDataAccessLayer.Extensions
             return result;
         }
 
+
+        public static int[,] ScaleValues(this int[,] arrayToTranslate, int minValue, int maxValue)
+        {
+            var scaledDoubleArray = new int[arrayToTranslate.GetLength(0), arrayToTranslate.GetLength(1)];
+            var newRange = maxValue - minValue;
+            float currentMaxValue = arrayToTranslate.GetAll().Max();
+            var scale = newRange / currentMaxValue;
+            for (int x = 0; x < arrayToTranslate.GetLength(0); x++)
+            {
+                for (int y = 0; y < arrayToTranslate.GetLength(1); y++)
+                {
+                    scaledDoubleArray[x, y] = (int)(arrayToTranslate[x, y] * scale);
+                }
+            }
+            return scaledDoubleArray;
+        }
     }
 
 
