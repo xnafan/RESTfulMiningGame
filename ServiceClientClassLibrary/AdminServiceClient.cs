@@ -4,34 +4,28 @@ using System;
 
 namespace ServiceClientClassLibrary
 {
-    public class AdminServiceClient
+    public class AdminServiceClient : ServiceClientBase
     {
-        Random _rnd = new Random();
-        RestClient _client;
+        public AdminServiceClient(Uri baseUri) : base(baseUri){}
 
-        public AdminServiceClient(Uri baseUri)
+        public string CreateGame(string gameName, int mapSideLength)
         {
-            _client = new RestClient(baseUri);
-        }
-
-        public Guid CreateGame(string gameName, int gameAreaWidthInQuadrants, int gameAreaHeightInQuadrants, int seed = 0)
-        {
-            var request = new RestRequest("games");
-            request.AddJsonBody(new Game() { Name = gameName, GameAreaWidthInQuadrants = gameAreaWidthInQuadrants, GameAreaHeightInQuadrants = gameAreaHeightInQuadrants, Seed = (seed== 0 ? _rnd.Next(1000000):seed)});
-            var result = _client.Post<Guid>(request);
+            var request = CreateRequest("games");
+            request.AddJsonBody(new MiningGameDto() { Name = gameName, MapSideLength = mapSideLength});
+            var result = _client.Post<string>(request);
             if (result.IsSuccessful)
             {
                 return result.Data;
             }
             else
             {
-                throw new Exception($"Error creating new game. Error was '{result.ErrorMessage}'");
+                throw new Exception($"Error creating new Game. Error was '{result.ErrorMessage}'");
             }
         }
 
-        public bool DeleteGame(Guid gameGuid)
+        public bool DeleteGame(string gameId)
         {
-            var request = new RestRequest("games/{gameGuid}");
+            var request = CreateRequest($"games/{gameId}");
             var result = _client.Delete<bool>(request);
             if (result.IsSuccessful)
             {
@@ -39,19 +33,19 @@ namespace ServiceClientClassLibrary
             }
             else
             {
-                throw new Exception($"Error deleting game '{gameGuid}'. Error was '{result.ErrorMessage}'");
+                throw new Exception($"Error deleting game '{gameId}'. Error was '{result.ErrorMessage}'");
             }
         }
 
-        public bool IsGameRunning(Guid gameGuid)
+        public bool DoesGameExist(string gameId)
         {
-            return GetGameInfo(gameGuid) != null;
+            return GetGameInfo(gameId) != null;
         }
 
-        public Game GetGameInfo(Guid gameGuid)
+        public MiningGameDto GetGameInfo(string gameId)
         {
-            string relativePath = $"games/{gameGuid}";
-            var result = _client.Get<Game>(new RestRequest(relativePath));
+            string relativePath = $"games/{gameId}";
+            var result = _client.Get<MiningGameDto>(CreateRequest(relativePath));
             if (result.IsSuccessful)
             {
                 return result.Data;

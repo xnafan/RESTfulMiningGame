@@ -1,70 +1,62 @@
 ﻿using ServiceClientClassLibrary;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MiningClient
+namespace MiningClient;
+
+public partial class GameGuidForm : Form
 {
-    public partial class GameGuidForm : Form
+    public string ValidGameGuid { get; set; }
+    AdminServiceClient _adminClient;
+
+    public GameGuidForm(AdminServiceClient adminServiceClient)
     {
-        public Guid ValidGameGuid { get; set; }
-        AdminServiceClient _adminClient;
+        InitializeComponent();
+        _adminClient = adminServiceClient;
+    }
 
-        public GameGuidForm(AdminServiceClient adminServiceClient)
+    private void btnOk_Click(object sender, EventArgs e)
+    {
+        SaveAndClose();
+    }
+
+    private void SaveAndClose()
+    {
+        ValidGameGuid = txtGameId.Text;
+        Close();
+    }
+
+    private bool CheckGameId(string gameId)
+    {
+        try
         {
-            InitializeComponent();
-            _adminClient = adminServiceClient;
+            return _adminClient.DoesGameExist(gameId);
         }
-
-        private void btnOk_Click(object sender, EventArgs e)
+        catch (FormatException fex)
         {
-            SaveAndClose();
+            return false;
         }
-
-        private void SaveAndClose()
+        catch (Exception ex)
         {
-            ValidGameGuid = new Guid(txtGameId.Text);
-            Close();
+            MessageBox.Show($"Error retrieving game data: '{ex.Message}'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
         }
+    }
 
-        private bool CheckGuid()
+    private void txtGameId_TextChanged(object sender, EventArgs e)
+    {
+        if (CheckGameId(txtGameId.Text))
         {
-            try
-            {
-                Guid gameGuid = new Guid(txtGameId.Text);
-                return _adminClient.IsGameRunning(gameGuid);
-            }
-            catch (FormatException fex)
-            {
-                return false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error retrieving game data: '{ex.Message}'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+            btnOk.Enabled = true;
+            lblStatus.Text = "Game found!";
+            lblStatus.ForeColor = Color.Green;
         }
-
-        private void txtGameId_TextChanged(object sender, EventArgs e)
+        else
         {
-            if (CheckGuid())
-            {
-                btnOk.Enabled = true;
-                lblStatus.Text = "Game found!";
-                lblStatus.ForeColor = Color.Green;
-            }
-            else
-            {
-                btnOk.Enabled = false;
-                lblStatus.ForeColor = Color.Red;
-                lblStatus.Text = "Game not found...";
-            }
+            btnOk.Enabled = false;
+            lblStatus.ForeColor = Color.Red;
+            lblStatus.Text = "Game not found...";
         }
     }
 }

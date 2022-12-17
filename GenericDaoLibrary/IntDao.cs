@@ -3,7 +3,7 @@ using System;
 
 namespace GenericDaoLibrary
 {
-    public class IntDataAccess<T> : DaoBase<T, int> where T : IIdentifiable<int>
+    public class IntDao<T> : DaoBase<T, int> where T : IIdentifiable<int>
     {
         int _nextId;            
         protected override int GetNewId()

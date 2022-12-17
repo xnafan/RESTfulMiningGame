@@ -1,9 +1,9 @@
 ﻿namespace MiningDataAccessLayer.Model
 {
-    public class Quadrant
+    public class MapSquare
     {
         public int X { get; set; }
         public int Y { get; set; }
-        public int Content { get; set; }
+        public int Value { get; set; }
     }
 }

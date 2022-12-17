@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1092</x>
-      <y>560</y>
+      <x>798</x>
+      <y>196</y>
       <w>252</w>
       <h>126</h>
     </coordinates>
@@ -19,8 +19,8 @@ AccountBalance
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>686</x>
-      <y>560</y>
+      <x>392</x>
+      <y>196</y>
       <w>252</w>
       <h>154</h>
     </coordinates>
@@ -36,8 +36,8 @@ Seed
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>924</x>
-      <y>574</y>
+      <x>630</x>
+      <y>210</y>
       <w>196</w>
       <h>70</h>
     </coordinates>
@@ -50,8 +50,8 @@ m2=*
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>686</x>
-      <y>812</y>
+      <x>392</x>
+      <y>448</y>
       <w>252</w>
       <h>126</h>
     </coordinates>
@@ -66,8 +66,8 @@ Value
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>784</x>
-      <y>700</y>
+      <x>490</x>
+      <y>336</y>
       <w>56</w>
       <h>140</h>
     </coordinates>
@@ -80,8 +80,8 @@ m2=*
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1078</x>
-      <y>812</y>
+      <x>784</x>
+      <y>448</y>
       <w>252</w>
       <h>126</h>
     </coordinates>
@@ -94,8 +94,8 @@ Price
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1190</x>
-      <y>672</y>
+      <x>896</x>
+      <y>308</y>
       <w>154</w>
       <h>168</h>
     </coordinates>
@@ -108,8 +108,8 @@ for sale by ^</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>924</x>
-      <y>854</y>
+      <x>630</x>
+      <y>490</y>
       <w>182</w>
       <h>70</h>
     </coordinates>
@@ -122,8 +122,8 @@ m2=*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>924</x>
-      <y>672</y>
+      <x>630</x>
+      <y>308</y>
       <w>196</w>
       <h>168</h>
     </coordinates>

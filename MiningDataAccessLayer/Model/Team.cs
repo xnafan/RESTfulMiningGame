@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 namespace MiningDataAccessLayer.Model
 {
-    public class Team : IIdentifiable<Guid>
+    public class Team : IIdentifiable<string>
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; } = ShortUIDTool.CreateShortId();
         public string Name { get; set; }
         public int AccountBalance { get; set; }
-        public List<Quadrant> KnownQuadrants { get; set; } = new();
+        public List<MapSquare> KnownMapSquares { get; set; } = new();
     }
 }

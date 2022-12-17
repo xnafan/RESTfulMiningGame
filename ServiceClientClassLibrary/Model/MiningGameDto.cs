@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace ServiceClientClassLibrary.Model
 {
-    public class Team
+    public class MiningGameDto 
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public int AccountBalance { get; set; }
-        public List<MapSquareDto> KnownQuadrants { get; set; } = new();
+        public List<string> TeamNames { get; set; } = new();
+        public int MapSideLength { get; set; }
     }
 }

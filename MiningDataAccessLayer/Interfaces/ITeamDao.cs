@@ -4,5 +4,5 @@ using System;
 
 namespace MiningDataAccessLayer.Interfaces
 {
-    public interface ITeamDao : IGenericDao<Team, Guid> {  }
+    public interface ITeamDao : IGenericDao<Team, string> {  }
 }

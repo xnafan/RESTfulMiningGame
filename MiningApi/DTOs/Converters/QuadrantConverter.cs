@@ -9,20 +9,20 @@ namespace MiningApi.DTOs.Converters
     public static class QuadrantConverter
     {
 
-        public static Quadrant FromDto(this QuadrantDto quadrantDto)
+        public static MapSquare FromDto(this MapSquareDto quadrantDto)
         {
-            return quadrantDto.CopyPropertiesTo(new Quadrant());
+            return quadrantDto.CopyPropertiesTo(new MapSquare());
         }
-        public static QuadrantDto ToDto(this Quadrant quadrant)
+        public static MapSquareDto ToDto(this MapSquare quadrant)
         {
-            return quadrant.CopyPropertiesTo(new QuadrantDto());
+            return quadrant.CopyPropertiesTo(new MapSquareDto());
         }
 
-        public static IEnumerable<Quadrant> FromDtos(this IEnumerable<QuadrantDto> quadrantDtos)
+        public static IEnumerable<MapSquare> FromDtos(this IEnumerable<MapSquareDto> quadrantDtos)
         {
             return quadrantDtos.Select(dto => dto.FromDto());
         }
-        public static IEnumerable<QuadrantDto> ToDtos(this IEnumerable<Quadrant> quadrants)
+        public static IEnumerable<MapSquareDto> ToDtos(this IEnumerable<MapSquare> quadrants)
         {
             return quadrants.Select(dto => dto.ToDto());
         }

@@ -7,7 +7,12 @@ public abstract class DaoBase<T, U> : IGenericDao<T, U> where T : IIdentifiable<
     private Dictionary<U, T> _internalStorage = new Dictionary<U, T>();
     public U Add(T itemToAdd)
     {
-        itemToAdd.Id = GetNewId();
+        var newId = GetNewId();
+        while (_internalStorage.ContainsKey(newId))
+        {
+            newId = GetNewId();
+        }
+        itemToAdd.Id = newId;
         _internalStorage[itemToAdd.Id] = itemToAdd;
         return itemToAdd.Id;
     }
@@ -16,7 +21,12 @@ public abstract class DaoBase<T, U> : IGenericDao<T, U> where T : IIdentifiable<
 
     public IEnumerable<T> GetAll() => _internalStorage.Values.ToList();
 
-    public T GetById(U idOfItemToRetrieve) => _internalStorage[idOfItemToRetrieve];
+    public T GetById(U idOfItemToRetrieve)
+    {
+        if(!_internalStorage.ContainsKey(idOfItemToRetrieve))
+        { return default(T); }
+        return _internalStorage[idOfItemToRetrieve];
+    }
 
     public bool Update(T itemToUpdate)
     {

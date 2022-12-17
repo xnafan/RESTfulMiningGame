@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GenericDaoLibrary;
+using Microsoft.AspNetCore.Mvc;
+using MiningApi.Authentication;
 using MiningApi.Dtos;
 using MiningApi.DTOs.Converters;
 using MiningDataAccessLayer.Interfaces;
@@ -6,13 +8,12 @@ using System;
 using System.Collections.Generic;
 namespace MiningApi.Controllers;
 
+[ApiKeyAuthenticate]
 [Route("api/[controller]")]
 [ApiController]
 public class GamesController : ControllerBase
 {
-
     private IMiningGameDao _gameDataAccess;
-
     public GamesController(IMiningGameDao gameDataAccess) => _gameDataAccess = gameDataAccess;
 
     [HttpGet]

@@ -11,12 +11,12 @@ namespace MiningApi.DTOs.Converters
 
         public static MiningGame FromDto(this MiningGameDto gameDto)
         {
-            return gameDto.CopyPropertiesTo(new MiningGame());
+            return gameDto?.CopyPropertiesTo(new MiningGame());
         }
         public static MiningGameDto ToDto(this MiningGame game)
         {
-            var gameDto = game.CopyPropertiesTo(new MiningGameDto());
-           // gameDto.TeamNames = game.Teams.Select(team => team.Name);
+            var gameDto = game?.CopyPropertiesTo(new MiningGameDto());
+           // gameDto.TeamNames = Teams.Select(team => team.Name);
             return gameDto;
         }
 

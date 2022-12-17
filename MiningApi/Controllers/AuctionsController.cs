@@ -15,7 +15,7 @@ namespace MiningApi.Controllers
         public AuctionsController(IMapSquareDao dataAccess) => _dataAccess = dataAccess;
 
         [HttpGet]
-        public IEnumerable<Auction> Get()
+        public IEnumerable<Auction> Get(string gameUid)
         {
             return _dataAccess.GetAll();
         }

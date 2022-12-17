@@ -1,14 +1,11 @@
 ﻿using GenericDaoLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
-
-namespace MiningApi.Dtos
+namespace MiningApi.Dtos;
+public class AuctionDto : IIdentifiable<int>
 {
-    public class AuctionDto : IIdentifiable<Guid>
-    {
-        public Guid Id { get; set; }
-        public int Price { get; set; }
-        public Guid SellerTeamId { get; set; }
-        public List<QuadrantDto> Quadrants { get; set; }
-    }
+    public int Id { get; set; }
+    public int Price { get; set; }
+    public string SellerTeamId { get; set; }
+    public MapSquareDto MapSquare { get; set; }
 }
