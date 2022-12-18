@@ -11,36 +11,53 @@ namespace MiningApi.Controllers;
 [ApiController]
 public class TeamsController : ControllerBase
 {
-    private ITeamDao _teamDataAccess;
-
-    public TeamsController(ITeamDao teamDataAccess) => _teamDataAccess = teamDataAccess;
+    private ITeamDao _teamDao;
+    private IMiningGameDao _miningGameDao;
+    public TeamsController(ITeamDao teamDao, IMiningGameDao miningGameDao)
+    {
+        _teamDao = teamDao;
+        _miningGameDao = miningGameDao;
+    }
 
     [ApiKeyAuthenticate]
     [HttpGet]
     public ActionResult<IEnumerable<TeamDto>> Get()
     {
-        return Ok(_teamDataAccess.GetAll().ToDtos());
+        return Ok(_teamDao.GetAll().ToDtos());
+    }
+
+    [HttpGet("/api/games/{gameId}/teams/{teamId}/accesstoken")]
+    public ActionResult<string> GetAccessToken(string gameId, string teamId)
+    {
+        return Ok(TokenAuthenticationTool.GenerateToken(gameId, teamId));
+    }
+
+    [ApiKeyAuthenticate]
+    [HttpGet("/api/games/{gameId}/teams")]
+    public ActionResult<string> GetTeamsForGame(string gameId)
+    {
+        return Ok(_miningGameDao.GetById(gameId).Teams);
     }
 
     [ApiKeyAuthenticate]
     [HttpGet("{id}")]
     public ActionResult<TeamDto> Get(string id)
     {
-        return Ok(_teamDataAccess.GetById(id).ToDto());
+        return Ok(_teamDao.GetById(id).ToDto());
     }
 
     [ApiKeyAuthenticate]
     [HttpPost]
     public ActionResult Post([FromBody] TeamDto teamToAdd)
     {
-       return Ok( _teamDataAccess.Add(teamToAdd.FromDto()));
+       return Ok( _teamDao.Add(teamToAdd.FromDto()));
     }
 
 
     [HttpPut("{id}")]
     public ActionResult Put(string id, [FromBody] TeamDto teamToUpdate)
     {
-        if (_teamDataAccess.Update(teamToUpdate.FromDto()))
+        if (_teamDao.Update(teamToUpdate.FromDto()))
         {
             return Ok();
         }
@@ -51,7 +68,7 @@ public class TeamsController : ControllerBase
     [HttpDelete("{id}")]
     public ActionResult Delete(string id)
     {
-        if (_teamDataAccess.Delete(id))
+        if (_teamDao.Delete(id))
         {
             return Ok();
         }

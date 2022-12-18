@@ -13,14 +13,15 @@ namespace MiningApi.DTOs.Converters
         public static MiningGame FromDto(this MiningGameDto gameDto)
         {
             var game = gameDto?.CopyPropertiesTo(new MiningGame());
-            gameDto.MapSquares.ForEach(square => game.MapSquareValues[square.X, square.Y] = square.Value);
+            //gameDto.MapSquares.ForEach(square => game.MapSquareValues[square.X, square.Y] = square.Value);
             return game;
         }
         public static MiningGameDto ToDto(this MiningGame game)
         {
             var gameDto = game?.CopyPropertiesTo(new MiningGameDto());
-            gameDto.MapSquares = game.MapSquareValues.GetAllPositions().Select(tile => new MapSquareDto() {X = tile.X, Y = tile.Y, Value = game.MapSquareValues[tile.X, tile.Y]}).ToList();
-            //gameDto.TeamNames = Teams.Select(team => team.Name);
+            //gameDto.MapSquares = game.MapSquareValues.GetAllPositions().Select(tile => new MapSquareDto() {X = tile.X, Y = tile.Y, Value = game.MapSquareValues[tile.X, tile.Y]}).ToList();
+            gameDto.TeamNames = game.Teams.Select(team => team.Name).ToList();
+            gameDto.Auctions = game.Auctions.ToDtos().ToList();
             return gameDto;
         }
 

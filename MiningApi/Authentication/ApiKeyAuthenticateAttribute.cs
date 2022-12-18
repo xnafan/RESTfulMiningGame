@@ -20,7 +20,7 @@ namespace MiningApi.Authentication
                 context.Result = new ContentResult()
                 {
                     StatusCode = StatusCodes.Status401Unauthorized,
-                    Content = "No authentication header (using ApiKeyAuthenticateAttribute)"
+                    Content = "Missing 'ApiKeyAuthenticateAttribute' header!"
                 };
                 return;
             }
@@ -31,7 +31,7 @@ namespace MiningApi.Authentication
                 context.Result = new ContentResult()
                 {
                     StatusCode = StatusCodes.Status401Unauthorized,
-                    Content = "Invalid authentication key (using ApiKeyAuthenticateAttribute)"
+                    Content = "Invalid authentication key! (using ApiKeyAuthenticateAttribute)"
                 };
                 return;
             }

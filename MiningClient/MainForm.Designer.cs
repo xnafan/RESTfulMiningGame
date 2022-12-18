@@ -86,6 +86,7 @@ namespace MiningClient
             // 
             // pnlMap
             // 
+            this.pnlMap.CurrentSquare = null;
             this.pnlMap.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMap.Location = new System.Drawing.Point(0, 0);
             this.pnlMap.MapSideLength = 1;

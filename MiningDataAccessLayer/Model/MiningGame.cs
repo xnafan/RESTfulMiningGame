@@ -1,9 +1,9 @@
-﻿using GenericDaoLibrary.Interfaces;
+﻿using GenericDaoLibrary;
+using GenericDaoLibrary.Interfaces;
 using MiningDataAccessLayer.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace MiningDataAccessLayer.Model;
 public class MiningGame : IIdentifiable<string>
 {
@@ -22,7 +22,9 @@ public class MiningGame : IIdentifiable<string>
         }
         return MapSquareValues[column, row];
     }
-    public int InitialTeamFunding { get; set; } = 1000;
+    public int InitialTeamAccountBalance { get; set; } = 1000;
+
+    public List<Auction> Auctions { get; set; } = new();
     #endregion
 
     #region Constructors
@@ -33,7 +35,11 @@ public class MiningGame : IIdentifiable<string>
         MapSideLength = mapSideLength;
     }
 
-    public MiningGame() => MapSquareValues = GenerateMap();
+    public MiningGame()
+    {
+        Id = ShortUIDTool.CreateShortId();
+        MapSquareValues = GenerateMap();
+    }
 
     #endregion
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ServiceClientClassLibrary.Model
 {
-    public class Team
+    public class TeamDto
     {
         public string Id { get; set; }
         public string Name { get; set; }

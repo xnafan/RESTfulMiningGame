@@ -3,3 +3,8 @@ SCORE CALCULATION
 - number of mapSquares prospected
 - maximum saturation found
 - 
+
+
+Client functionality for students to code:
+prospect (game, coordinate) -> adds tile to known mapsquares for team
+create auction

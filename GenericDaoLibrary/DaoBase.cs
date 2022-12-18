@@ -4,7 +4,7 @@ using System.Linq;
 namespace GenericDaoLibrary;
 public abstract class DaoBase<T, U> : IGenericDao<T, U> where T : IIdentifiable<U> where U : notnull
 {
-    private Dictionary<U, T> _internalStorage = new Dictionary<U, T>();
+    protected Dictionary<U, T> _internalStorage = new Dictionary<U, T>();
     public U Add(T itemToAdd)
     {
         var newId = GetNewId();
