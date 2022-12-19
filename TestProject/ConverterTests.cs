@@ -1,3 +1,4 @@
+using GenericDaoLibrary;
 using MiningApi.DTOs.Converters;
 using MiningDataAccessLayer;
 using MiningDataAccessLayer.Extensions;

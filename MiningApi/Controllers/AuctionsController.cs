@@ -39,16 +39,17 @@ public class AuctionsController : ControllerBase
     [HttpPost]
     public IActionResult Post([FromHeader(Name=TokenAuthenticationTool.HEADER_NAME)] string authenticationToken, [FromBody] AuctionDto auctionDto)
     {
-        if (!TokenAuthenticationTool.ValidateToken(authenticationToken))
+        if (TokenAuthenticationTool.ValidateToken(authenticationToken))
         {
             var auction = auctionDto.FromDto();
             var gameAndTeamInfo = TokenAuthenticationTool.Parse(authenticationToken);
             _miningGameDao.GetById(gameAndTeamInfo.GameId).Auctions.Add(auction);
+            //TODO: ensure the team has explored the mapsquare and that the Auction doesn't exist yet (no duplicates by same team)
             _auctionDao.Add(auction);
             return Ok();
         }
         return Unauthorized();
-    }
+     }
 
     [HttpPut("{id}")]
     public void Put(int id, [FromBody] AuctionDto auction) => _auctionDao.Update(auction.FromDto());
