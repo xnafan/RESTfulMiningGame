@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Windows.Forms;
 namespace MiningClient.CustomControls;
 public class ProspectingPanel : Panel
@@ -65,23 +66,23 @@ public class ProspectingPanel : Panel
             DrawMap(e.Graphics);
         if(_lastMouseLocation.HasValue && CurrentSquare != null)
         {
-            DrawWithOutline(e, GetPositionForMapSquareInfo(e.Graphics));
+            DrawWithOutline(CurrentSquare.ToString(), e.Graphics, GetPositionForMapSquareInfo(e.Graphics));
         }
     }
 
-    private void DrawWithOutline(PaintEventArgs e, Point position)
+    private void DrawWithOutline(string text, Graphics g, Point position)
     {
 
-        for (int deltaX = -2; deltaX <= 1; deltaX++)
+        for (int deltaX = -2; deltaX <= 2; deltaX++)
         {
-            for (int deltaY = -2; deltaY <= 1; deltaY++)
+            for (int deltaY = -2; deltaY <= 2; deltaY++)
             {
-                e.Graphics.DrawString(CurrentSquare.ToString(), _font, Brushes.White, position + new Size(deltaX, deltaY));
+                g.DrawString(text, _font, Brushes.White, position + new Size(deltaX, deltaY));
             }
 
         }
        
-        e.Graphics.DrawString(CurrentSquare.ToString(), _font, Brushes.Black, position);
+        g.DrawString(text, _font, Brushes.Black, position);
     }
 
     private void DrawMapSquare(Graphics g, MapSquareDto mapSquare)
@@ -118,18 +119,22 @@ public class ProspectingPanel : Panel
 
     private Point GetPositionForMapSquareInfo(Graphics g)
     {
-        var stringSize = g.MeasureString("(00,00)=000", _font);
+        var stringSize = g.MeasureString(CurrentSquare.ToString(), _font);
 
         if (!_lastMouseLocation.HasValue) {return new Point(0, 0); }
-
         var centerInPixels = tileSizeInPixels * MapSideLength / 2;
-        var deltaX = centerInPixels - _lastMouseLocation.Value.X;
-        var deltaY = centerInPixels - _lastMouseLocation.Value.Y;
-        var xPos = Math.Sign(deltaX) * tileSizeInPixels*3;
-        var yPos = Math.Sign(deltaY) * tileSizeInPixels;
-        Point center = new Point(_lastMouseLocation.Value.X + (int)xPos, _lastMouseLocation.Value.Y + (int)yPos);
-        center -= new Size((int)stringSize.Width/2, (int)stringSize.Height/2);
-        Debug.WriteLine($"lastMousePos: {_lastMouseLocation.Value}, x:{xPos}, y:{yPos} = center:{center}");
-        return center;
+
+        Vector2 mousePosition = new Vector2(_lastMouseLocation.Value.X, _lastMouseLocation.Value.Y);
+        Vector2 centerPosition = new Vector2(centerInPixels);
+
+        Vector2 directionTowardsCenterFromMouse = centerPosition - mousePosition;
+        directionTowardsCenterFromMouse /= 7;
+
+        Vector2 sizeOfText = new Vector2(stringSize.Width, (int)stringSize.Height);
+        Vector2 positionToDraw = mousePosition + directionTowardsCenterFromMouse;
+        Vector2 positionToDrawCompensatedForTextSize = positionToDraw - sizeOfText/2;
+        Debug.WriteLine(sizeOfText.ToString());
+
+        return new Point((int)positionToDrawCompensatedForTextSize.X, (int)positionToDrawCompensatedForTextSize.Y);
     }
 }
